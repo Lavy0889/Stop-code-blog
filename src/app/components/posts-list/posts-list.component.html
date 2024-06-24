@@ -1,0 +1,17 @@
+<h2>Posts</h2>
+<div class="btn-group mb-2" role="group">
+<button type="button" class="btn btn-outline-secondary" (click)="filter(undefined)"
+[ngClass]="{'active':bs.selectedCategory== undefined}"> <!-- questo è il bottone fisso tutti -->
+    Tutti</button>
+<button type="button" class="btn btn-outline-secondary"
+ *ngFor="let c of bs.getCategories()"
+   (click)="filter(c)"
+   [ngClass]="{'active':bs.selectedCategory== c}"> <!--  active lascia il bottone selezionato-questo è il bottone che viene creato ogni volta con il ciclo -->
+ {{c.title}}</button>
+
+</div>
+
+<app-posts-preview
+ *ngFor="let articolo of posts"
+[post]="articolo">
+</app-posts-preview>
